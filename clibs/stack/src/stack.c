@@ -1,18 +1,18 @@
-#include "../include/stack.h"
+#include "stack/stack.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #ifdef STACK_DEBUG
-#include "../include/stack_dump.h"
+#include "stack/stack_dump.h"
 #endif /* STACK_DEBUG */
 
 #define FREE(ptr) free(ptr); ptr = NULL;
 
 #define STACK_IDX(idx) MovePtr(stack->data, idx, stack->meta.element_size)
 
-static const          int kCapacityUpperLimit = 10000;
+static const unsigned int kCapacityUpperLimit = 10000;
 static const unsigned int kInitCapacity       = 8;
 
 static StackErr StackRealloc(Stack* stack);

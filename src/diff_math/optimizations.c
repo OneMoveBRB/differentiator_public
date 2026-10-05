@@ -1,10 +1,10 @@
-#include "../../include/diff_math/optimizations.h"
+#include "differentiator/diff_math/optimizations.h"
 
 #include <math.h>
 #include <assert.h>
 
-#include "../../include/dsl.h"
-#include "../../include/utils.h"
+#include "differentiator/dsl.h"
+#include "differentiator/utils.h"
 
 #define IS_EQUAL(ptr, val) \
     (ptr->data.type == TOKEN_TYPE_CONSTANT && IsEqual(ptr->data.constant, val))

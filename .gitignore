@@ -5,6 +5,8 @@ build-*/
 cmake-build-*/
 reports/
 *.o
+*.a
+*.so
 *.obj
 *.out
 *.exe

@@ -1,4 +1,4 @@
-#include "../include/parser.h"
+#include "differentiator/parser.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,8 +6,9 @@
 #include <ctype.h>
 #include <assert.h>
 
-#include "../include/dsl.h"
-#include "../clibs/dyn_arr.h"
+#include "differentiator/dsl.h"
+#include "differentiator/tokens/token_def.h"
+#include "dyn_arr/dyn_arr.h"
 
 #define SKIP_SPACES(file_buffer, offset)                \
     while (isspace(file_buffer[offset])) { ++offset; }
@@ -95,19 +96,19 @@ static Token* LexicalAnalysis(char* file_buffer) {
 static LexStatus LexParseBrackets(const char* file_buffer, size_t* offset, Token** tokens) {
     assert( file_buffer != NULL );
 
-    Token  br_token     = {};
+    Token  br_token     = {0};
     size_t br_name_size = 0;
 
 #define BRACKET(br_id, br_name, br_enum)                                                        \
     if (DYNARR_CAP(file_buffer) - 1 - *offset >= (br_name_size = strlen(br_name))               \
         && strncmp(&file_buffer[*offset], br_name, br_name_size) == 0) {                        \
-        br_token = {TOKEN_TYPE_BRACKET, {.bracket = br_enum}};                                  \
+        br_token = (Token){TOKEN_TYPE_BRACKET, {.bracket = br_enum}};                           \
         DYNARR_PUSH(*tokens, br_token);                                                         \
         *offset += br_name_size;                                                                \
         return LEX_SUCCESS;                                                                     \
     }
 
-#include "../include/tokens/token_brackets.inc"
+#include "differentiator/tokens/token_brackets.inc"
 
 #undef BRACKET
 
@@ -117,19 +118,19 @@ static LexStatus LexParseBrackets(const char* file_buffer, size_t* offset, Token
 static LexStatus LexParseOperations(const char* file_buffer, size_t* offset, Token** tokens) {
     assert( file_buffer != NULL );
 
-    Token  op_token     = {};
+    Token  op_token     = {0};
     size_t op_name_size = 0;
 
 #define OPERATION(op_id, op_name, op_enum)                                                      \
     if (DYNARR_CAP(file_buffer) - 1 - *offset >= (op_name_size = strlen(op_name))               \
         && strncmp(&file_buffer[*offset], op_name, op_name_size) == 0) {                        \
-        op_token = {TOKEN_TYPE_OPERATION, {.operation = op_enum}};                              \
+        op_token = (Token){TOKEN_TYPE_OPERATION, {.operation = op_enum}};                       \
         DYNARR_PUSH(*tokens, op_token);                                                         \
         *offset += op_name_size;                                                                \
         return LEX_SUCCESS;                                                                     \
     }
 
-#include "../include/tokens/token_operations.inc"
+#include "differentiator/tokens/token_operations.inc"
 
 #undef OPERATION
 

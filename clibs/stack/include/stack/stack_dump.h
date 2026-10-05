@@ -5,7 +5,7 @@
 #define STACK_DEBUG
 #endif /* STACK_DEBUG */
 
-#include "../include/stack.h"
+#include "stack.h"
 
 StackErr StackVerify(Stack* stack);
 StackErr StackDump(Stack* stack, StackErr error);

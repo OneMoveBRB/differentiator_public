@@ -1,4 +1,4 @@
-#include "../include/ring_queue.h"
+#include "ring_queue/ring_queue.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-#include "../include/stack_dump.h"
+#include "stack/stack_dump.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -108,7 +108,7 @@ static size_t Fnv1aHash(const void* data, size_t len, size_t seed) {
 }
 
 void FillPoison(void* data, size_t size) {
-    memset(data, kPoisonValue, size);
+    memset(data, (int)kPoisonValue, size);
 }
 
 const char* StackErrorMessage(StackErr error) {

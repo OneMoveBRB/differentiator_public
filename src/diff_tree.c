@@ -1,4 +1,4 @@
-#include "../include/diff_tree.h"
+#include "differentiator/diff_tree.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,10 +6,9 @@
 #include <string.h>
 #include <assert.h>
 
-#include "../clibs/dyn_arr.h"
-#include "../clibs/stack/include/stack.h"
-#include "../clibs/hash_table/include/double_ht.h"
-#include "../clibs/ring_queue/include/ring_queue.h"
+#include "stack/stack.h"
+#include "hash_table/double_ht.h"
+#include "ring_queue/ring_queue.h"
 
 #define FREE(ptr)           \
     do {                    \
@@ -152,7 +151,7 @@ DiffNode* DiffTreeCopySubtree(DiffNode* node) {
         real_node = *(DiffNode**)RingQueuePop(bfs_queue);
         copy_node = *(DiffNode**)DoubleHT_Delete(hash_table, &real_node);
 
-        fprintf(stderr, "r: %p\t c: %p\n", real_node, copy_node);
+        fprintf(stderr, "r: %p\t c: %p\n", (void*)real_node, (void*)copy_node);
 
         assert( real_node != NULL );
         assert( copy_node != NULL );
@@ -316,7 +315,7 @@ static void DiffNodeDump(FILE* fp, DiffNode* node) {
                     PTR_FMT(node->left), PTR_FMT(node->right));                     \
     }
 
-#include "../include/tokens/token_operations.inc"
+#include "differentiator/tokens/token_operations.inc"
 
 #undef OPERATION
 

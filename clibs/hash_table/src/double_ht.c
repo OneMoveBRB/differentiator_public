@@ -1,4 +1,4 @@
-#include "../include/double_ht.h"
+#include "hash_table/double_ht.h"
 
 #include <stdalign.h>
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #include <math.h>
 #include <assert.h>
 
-#include "../include/murmurhash3.h"
+#include "hash_table/murmurhash3.h"
 
 #define FREE(ptr)   \
     do {            \

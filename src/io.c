@@ -1,4 +1,4 @@
-#include "../include/io.h"
+#include "differentiator/io.h"
 
 #include <sys/stat.h>
 #include <stdio.h>
@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <errno.h>
 
-#include "../clibs/dyn_arr.h"
+#include "dyn_arr/dyn_arr.h"
 
 typedef enum {
     FILE_OK,
@@ -46,7 +46,7 @@ char* ReadFile(const char* file_name) {
 static FileStatus GetFileSize(const char* file_name, size_t* file_size) {
     assert( file_name != NULL );
 
-    struct stat file_info = {};
+    struct stat file_info = {0};
     if (stat(file_name, &file_info) != 0) {
         switch (errno) {
         case EACCES:

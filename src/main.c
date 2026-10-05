@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "include/io.h"
-#include "clibs/dyn_arr.h"
-#include "include/parser.h"
-#include "include/diff_tree.h"
-#include "include/diff_math/differentiation.h"
-#include "include/diff_math/optimizations.h"
+#include "differentiator/io.h"
+#include "dyn_arr/dyn_arr.h"
+#include "differentiator/parser.h"
+#include "differentiator/diff_tree.h"
+#include "differentiator/diff_math/differentiation.h"
+#include "differentiator/diff_math/optimizations.h"
 
 static const char* gInputFile = NULL;
 

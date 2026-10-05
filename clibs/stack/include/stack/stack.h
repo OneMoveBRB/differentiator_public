@@ -45,7 +45,7 @@ static const unsigned int kHashSeed    = 0x811C9DC5;
 
 #ifndef VAR_INFO_STRUCT
 #define VAR_INFO_STRUCT
-#define INIT VarInfo{__FILE__, __func__, __LINE__}
+#define INIT (VarInfo){__FILE__, __func__, __LINE__}
 typedef struct VarInfo{
     const char* file;
     const char* func;

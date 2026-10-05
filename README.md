@@ -1,5 +1,43 @@
 # Differentiator
 
+## Building
+
+### Quick start
+
+```bash
+git clone <repo-url> differentiator
+cd differentiator
+mkdir debug
+cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON -DWARNINGS_AS_ERRORS=ON
+cmake --build build -j
+./build/src/run examples/in.txt
+```
+
+### CMake
+
+| Action              | Command                                                                          |
+|---------------------|----------------------------------------------------------------------------------|
+| Configure (Debug)   | `cmake -B build -DCMAKE_BUILD_TYPE=Debug -DENABLE_SANITIZERS=ON -DBUILD_TESTS=ON`|
+| Configure (Release) | `cmake -B build -DCMAKE_BUILD_TYPE=Release`                                      |
+| Build               | `cmake --build build -j`                                                         |
+| Run                 | `./build/src/run examples/in.txt`                                                |
+
+### CMake options
+
+| Option                | Default | Description                                          |
+|-----------------------|---------|------------------------------------------------------|
+| `CMAKE_BUILD_TYPE`    | —       | `Debug`, `Release`, `RelWithDebInfo`, `MinSizeRel`   |
+| `ENABLE_WARNINGS`     | `ON`    | `-Wall -Wextra -Wpedantic …`                         |
+| `ENABLE_SANITIZERS`   | `OFF`   | ASan + UBSan (Debug only)                            |
+| `WARNINGS_AS_ERRORS`  | `OFF`   | `-Werror`                                            |
+
+Example with options:
+
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DWARNINGS_AS_ERRORS=ON
+cmake --build build -j
+```
+
 ## Grammar
 
 ```txt

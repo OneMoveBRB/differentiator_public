@@ -1,9 +1,9 @@
-#include "../../include/diff_math/differentiation.h"
+#include "differentiator/diff_math/differentiation.h"
 
 #include <stdio.h>
 #include <assert.h>
 
-#include "../../include/dsl.h"
+#include "differentiator/dsl.h"
 
 static DiffNode* DifferentiateNode(DiffNode* node);
 
